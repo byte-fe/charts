@@ -91,7 +91,7 @@ export default class BaseChart {
 		// Bind window events
 		BOUND_DRAW_FN = this.boundDrawFn.bind(this);
 		window.addEventListener('resize', BOUND_DRAW_FN);
-		window.addEventListener('orientationchange', this.boundDrawFn.bind(this));
+		window.addEventListener('orientationchange', BOUND_DRAW_FN);
 	}
 
 	boundDrawFn() {
@@ -100,7 +100,7 @@ export default class BaseChart {
 
 	unbindWindowEvents() {
 		window.removeEventListener('resize', BOUND_DRAW_FN);
-		window.removeEventListener('orientationchange', this.boundDrawFn.bind(this));
+		window.removeEventListener('orientationchange', BOUND_DRAW_FN);
 	}
 
 	// Has to be called manually

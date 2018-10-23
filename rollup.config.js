@@ -2,7 +2,7 @@ import pkg from './package.json';
 
 // Rollup plugins
 import babel from 'rollup-plugin-babel';
-import eslint from 'rollup-plugin-eslint';
+// import eslint from 'rollup-plugin-eslint';
 import replace from 'rollup-plugin-replace';
 import uglify from 'rollup-plugin-uglify-es';
 import sass from 'node-sass';
@@ -45,11 +45,11 @@ export default [
 			{
 				file: 'docs/assets/js/frappe-charts.min.js',
 				format: 'iife',
-			},
+			}/*,
 			{
 				file: pkg.browser,
 				format: 'iife',
-			}
+			}*/
 		],
 		name: 'frappe',
 		plugins: [
@@ -65,11 +65,11 @@ export default [
 					cssnano()
 				]
 			}),
-			eslint({
+			/*eslint({
 				exclude: [
 					'src/css/**'
 				]
-			}),
+			}),*/
 			babel({
 				exclude: 'node_modules/**',
 				plugins: ['external-helpers']
@@ -104,11 +104,11 @@ export default [
 					cssnano()
 				]
 			}),
-			eslint({
+			/*eslint({
 				exclude: [
 					'src/css/**'
 				]
-			}),
+			}),*/
 			babel({
 				exclude: 'node_modules/**'
 			}),
@@ -125,11 +125,11 @@ export default [
 			{
 				file: pkg.main,
 				format: 'cjs',
-			},
+			}/*,
 			{
 				file: pkg.module,
 				format: 'es',
-			}
+			}*/
 		],
 		plugins: [
 			postcssPlugin({
@@ -144,11 +144,11 @@ export default [
 					cssnano()
 				]
 			}),
-			eslint({
+			/*eslint({
 				exclude: [
 					'src/css/**',
 				]
-			}),
+			}),*/
 			babel({
 				exclude: 'node_modules/**',
 			}),
@@ -158,7 +158,7 @@ export default [
 			}),
 			uglify()
 		],
-	},
+	}/*,
 	{
 		input: 'src/js/chart.js',
 		output: [
@@ -191,5 +191,5 @@ export default [
 				ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
 			})
 		],
-	}
+	}*/
 ];
