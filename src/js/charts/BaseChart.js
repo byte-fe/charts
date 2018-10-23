@@ -7,8 +7,6 @@ import { getColor, isValidColor } from '../utils/colors';
 import { runSMILAnimation } from '../utils/animation';
 import { downloadFile, prepareForExport } from '../utils/export';
 
-let BOUND_DRAW_FN;
-
 export default class BaseChart {
 	constructor(parent, options) {
 
@@ -53,6 +51,7 @@ export default class BaseChart {
 			this.overlays = [];
 		}
 
+		this.bindDrawFn = function(e) {}
 		this.configure(options);
 	}
 
@@ -89,9 +88,9 @@ export default class BaseChart {
 		this.height = height - getExtraHeight(this.measures);
 
 		// Bind window events
-		BOUND_DRAW_FN = this.boundDrawFn.bind(this);
-		window.addEventListener('resize', BOUND_DRAW_FN);
-		window.addEventListener('orientationchange', BOUND_DRAW_FN);
+		this.bindDrawFn = this.boundDrawFn.bind(this);
+		window.addEventListener('resize', this.bindDrawFn);
+		window.addEventListener('orientationchange', this.bindDrawFn);
 	}
 
 	boundDrawFn() {
@@ -99,8 +98,8 @@ export default class BaseChart {
 	}
 
 	unbindWindowEvents() {
-		window.removeEventListener('resize', BOUND_DRAW_FN);
-		window.removeEventListener('orientationchange', BOUND_DRAW_FN);
+		window.removeEventListener('resize', this.bindDrawFn);
+		window.removeEventListener('orientationchange', this.bindDrawFn);
 	}
 
 	// Has to be called manually
