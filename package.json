@@ -23,11 +23,6 @@
     "\"js",
     "charts\""
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run build"
-    }
-  },
   "author": "Prateeksha Singh",
   "license": "MIT",
   "bugs": {
