@@ -7,8 +7,8 @@ import {
 import { lightenDarkenColor } from './colors'
 
 export const AXIS_TICK_LENGTH = 6
-const LABEL_MARGIN = 7
-export const FONT_SIZE = 10
+const LABEL_MARGIN = 4
+export const FONT_SIZE = 9
 const BASE_LINE_COLOR = '#dadada'
 const FONT_FILL = '#555b51'
 
@@ -325,7 +325,10 @@ function makeHoriLine(y, label, x1, x2, options = {}) {
   })
 
   let text = createSVG('text', {
-    x: x1 < x2 ? x1 - LABEL_MARGIN : x1 + LABEL_MARGIN,
+    x:
+      (x1 < x2 ? x1 - LABEL_MARGIN : x1 + LABEL_MARGIN) +
+      parseInt((label + '').length / 3) +
+      2,
     y: 0,
     dy: FONT_SIZE / 2 - 2 + 'px',
     'font-size': FONT_SIZE + 'px',
