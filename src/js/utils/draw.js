@@ -7,7 +7,7 @@ import {
 import { lightenDarkenColor } from './colors'
 
 export const AXIS_TICK_LENGTH = 6
-const LABEL_MARGIN = 4
+const LABEL_MARGIN = 7
 export const FONT_SIZE = 10
 const BASE_LINE_COLOR = '#dadada'
 const FONT_FILL = '#555b51'
